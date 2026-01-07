@@ -1,0 +1,82 @@
+@model FoodieApp.Models.User
+
+@{
+    ViewData["Title"] = "Inscription";
+}
+
+<section class="book_section layout_padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card border-0 shadow-lg rounded-lg mt-5">
+                    <div class="card-header bg-dark text-white text-center py-4">
+                        <h3 class="font-weight-light my-2">Créer un compte</h3>
+                        <p class="small mb-0 text-white-50">Rejoignez la communauté Foodie</p>
+                    </div>
+                    <div class="card-body p-5">
+                        @if (ViewBag.Error != null)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @ViewBag.Error
+                            </div>
+                        }
+                        <form asp-action="Register" method="post">
+                            <div class="form-row">
+                                <div class="form-group col-md-6 mb-3">
+                                    <label class="text-muted small font-weight-bold">Nom Complet</label>
+                                    <input asp-for="Name" class="form-control bg-light" placeholder="Votre nom" required />
+                                </div>
+                                <div class="form-group col-md-6 mb-3">
+                                    <label class="text-muted small font-weight-bold">Pseudo</label>
+                                    <input asp-for="Username" class="form-control bg-light" placeholder="Votre pseudo" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="text-muted small font-weight-bold">Email</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-light border-right-0"><i class="fa fa-envelope text-warning"></i></span>
+                                    </div>
+                                    <input asp-for="Email" class="form-control bg-light border-left-0" type="email" placeholder="votre@email.com" required />
+                                </div>
+                            </div>
+                            
+                            <div class="form-group mb-3">
+                                <label class="text-muted small font-weight-bold">Mot de passe</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-light border-right-0"><i class="fa fa-lock text-warning"></i></span>
+                                    </div>
+                                    <input asp-for="Password" class="form-control bg-light border-left-0" type="password" placeholder="Choisir un mot de passe" required />
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6 mb-3">
+                                    <label class="text-muted small font-weight-bold">Téléphone</label>
+                                    <input asp-for="Mobile" class="form-control bg-light" placeholder="06..." />
+                                </div>
+                                <div class="form-group col-md-6 mb-3">
+                                    <label class="text-muted small font-weight-bold">Adresse</label>
+                                    <input asp-for="Address" class="form-control bg-light" placeholder="Votre adresse" />
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-4 mb-0">
+                                <button type="submit" class="btn btn-warning btn-block btn-lg text-white font-weight-bold shadow-sm rounded-pill">
+                                    S'INSCRIRE
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer bg-white text-center py-3 border-0">
+                         <div class="small">
+                            Déjà membre ? <a asp-action="Login" class="text-warning font-weight-bold">Se connecter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

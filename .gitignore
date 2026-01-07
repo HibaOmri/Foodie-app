@@ -1,0 +1,16 @@
+## Ignore Visual Studio temporary files, build results, and user settings
+.vs/
+bin/
+obj/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+project.lock.json
+.DS_Store
+Thumbs.db
+
+## Ignore specific .NET Core / ASP.NET build folders
+.generated/
+appsettings.Development.json
+appsettings.Local.json

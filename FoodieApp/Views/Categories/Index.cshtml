@@ -1,0 +1,83 @@
+﻿@model IEnumerable<FoodieApp.Models.Category>
+
+@{
+    ViewData["Title"] = "Administration Catégories";
+}
+
+<section class="food_section layout_padding">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <div>
+                <h2 class="font-weight-bold">Gestion des Catégories</h2>
+                <p class="text-muted">Gérez les familles de produits (Burgers, Pizzas, etc.).</p>
+            </div>
+            <a asp-action="Create" class="btn btn-warning rounded-pill text-white font-weight-bold px-4 shadow-sm">
+                <i class="fa fa-plus-circle mr-2"></i> Nouvelle Catégorie
+            </a>
+        </div>
+
+        <div class="card border-0 shadow-lg rounded-lg overflow-hidden">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-borderless mb-0">
+                        <thead class="bg-light text-muted border-bottom">
+                            <tr>
+                                <th class="pl-4 py-4 font-weight-bold text-uppercase small">Catégorie</th>
+                                <th class="py-4 font-weight-bold text-uppercase small text-center">Statut</th>
+                                <th class="py-4 font-weight-bold text-uppercase small text-center">Date Création</th>
+                                <th class="pr-4 py-4 font-weight-bold text-uppercase small text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model) {
+                                <tr class="border-bottom">
+                                    <td class="pl-4 align-middle">
+                                        <div class="d-flex align-items-center">
+                                            @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                            {
+                                                <div class="img-container rounded overflow-hidden shadow-sm mr-3" style="width: 50px; height: 50px;">
+                                                    <img src="@item.ImageUrl" alt="@item.Name" class="w-100 h-100" style="object-fit: cover;">
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                 <div class="img-container rounded overflow-hidden shadow-sm mr-3 d-flex align-items-center justify-content-center bg-light" style="width: 50px; height: 50px;">
+                                                    <i class="fa fa-tag text-muted"></i>
+                                                </div>
+                                            }
+                                            <span class="font-weight-bold text-dark">@item.Name</span>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        @if (item.IsActive == true)
+                                        {
+                                            <span class="badge badge-success px-2 py-1">Actif</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-secondary px-2 py-1">Inactif</span>
+                                        }
+                                    </td>
+                                    <td class="align-middle text-center text-muted small">
+                                        @(item.CreateDate.HasValue ? item.CreateDate.Value.ToShortDateString() : "-")
+                                    </td>
+                                    <td class="pr-4 align-middle text-right">
+                                        <a asp-action="Edit" asp-route-id="@item.CategoryId" class="btn btn-sm btn-outline-primary rounded-circle mr-1" title="Modifier">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a asp-action="Details" asp-route-id="@item.CategoryId" class="btn btn-sm btn-outline-info rounded-circle mr-1" title="Détails">
+                                            <i class="fa fa-info"></i>
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.CategoryId" class="btn btn-sm btn-outline-danger rounded-circle" title="Supprimer">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

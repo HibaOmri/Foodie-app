@@ -1,0 +1,94 @@
+﻿@model FoodieApp.Models.Product
+
+@{
+    ViewData["Title"] = "Modifier Produit";
+}
+
+<section class="food_section layout_padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card border-0 shadow-lg rounded-lg overflow-hidden">
+                    <div class="card-header bg-dark text-white py-4 d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0 font-weight-light">Modifier le Produit</h4>
+                        <a asp-action="Index" class="btn btn-sm btn-outline-light rounded-pill"><i class="fa fa-arrow-left"></i> Retour</a>
+                    </div>
+                    <div class="card-body p-5">
+                        <form asp-action="Edit" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+                            <input type="hidden" asp-for="ProductId" />
+                            <input type="hidden" asp-for="ImageUrl" /> <!-- Hidden field to keep old image if not changed -->
+                            
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group mb-4">
+                                        <label asp-for="Name" class="font-weight-bold text-muted small text-uppercase">Nom du Produit</label>
+                                        <input asp-for="Name" class="form-control form-control-lg bg-light border-0 shadow-sm" required />
+                                        <span asp-validation-for="Name" class="text-danger small"></span>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="col-md-6 form-group mb-4">
+                                            <label asp-for="Price" class="font-weight-bold text-muted small text-uppercase">Prix (€)</label>
+                                            <input asp-for="Price" class="form-control bg-light border-0 shadow-sm" placeholder="Ex: 9.60" required />
+                                            <span asp-validation-for="Price" class="text-danger small"></span>
+                                        </div>
+                                        <div class="col-md-6 form-group mb-4">
+                                            <label asp-for="Quantity" class="font-weight-bold text-muted small text-uppercase">Stock</label>
+                                            <input asp-for="Quantity" class="form-control bg-light border-0 shadow-sm" />
+                                            <span asp-validation-for="Quantity" class="text-danger small"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label asp-for="Description" class="font-weight-bold text-muted small text-uppercase">Description</label>
+                                        <textarea asp-for="Description" class="form-control bg-light border-0 shadow-sm" rows="4"></textarea>
+                                        <span asp-validation-for="Description" class="text-danger small"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                     <div class="form-group mb-4">
+                                        <label asp-for="CategoryId" class="font-weight-bold text-muted small text-uppercase">Catégorie</label>
+                                        <select asp-for="CategoryId" class="form-control bg-light border-0 shadow-sm nice-select w-100" asp-items="ViewBag.CategoryId"></select>
+                                    </div>
+                                    
+                                    <div class="form-group mb-4">
+                                        <label class="font-weight-bold text-muted small text-uppercase">Image Actuelle</label>
+                                        <div class="img-preview border rounded p-2 text-center bg-light mb-2">
+                                            <img src="@(Model.ImageUrl ?? "/images/f1.png")" class="img-fluid" style="max-height: 180px;">
+                                        </div>
+                                        
+                                        <label class="font-weight-bold text-muted small text-uppercase mt-3">Changer l'Image</label>
+                                        <input type="file" name="imageFile" class="form-control-file bg-light border-0 shadow-sm p-3 w-100" accept="image/*" />
+                                    </div>
+
+                                    <div class="form-group form-check mb-4 bg-light p-3 rounded shadow-sm">
+                                        <label class="form-check-label user-select-none">
+                                            <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="form-group d-none">
+                                        <input asp-for="CreateDate" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="my-4">
+
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-warning btn-lg rounded-pill text-white px-5 font-weight-bold shadow-lg">
+                                    <i class="fa fa-save mr-2"></i> Enregistrer
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

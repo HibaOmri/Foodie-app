@@ -1,0 +1,71 @@
+@model FoodieApp.Models.User
+
+@{
+    ViewData["Title"] = "Mon Profil";
+}
+
+<section class="book_section layout_padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card border-0 shadow-lg rounded-lg mt-5">
+                    <div class="card-header bg-dark text-white d-flex align-items-center justify-content-between py-4 px-5">
+                        <h3 class="font-weight-light mb-0">Mon Profil</h3>
+                        @if (Model.Role == "Admin")
+                        {
+                            <span class="badge badge-warning text-white px-3 py-2 shadow-sm">ADMINISTRATEUR</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-light text-dark px-3 py-2 shadow-sm">MEMBRE</span>
+                        }
+                    </div>
+                    <div class="card-body p-5">
+                        <div class="row">
+                            <div class="col-md-4 text-center border-right">
+                                <div class="mb-4">
+                                    <i class="fa fa-user-circle fa-6x text-warning mb-3"></i>
+                                    <h4 class="font-weight-bold">@Model.Name</h4>
+                                    <p class="text-muted small">@Model.Username</p>
+                                </div>
+                                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                     <a asp-action="Logout" class="btn btn-outline-danger btn-block rounded-pill mt-3 font-weight-bold">
+                                        <i class="fa fa-sign-out mr-2"></i> Se déconnecter
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-8 pl-5">
+                                <h5 class="mb-4 text-uppercase text-muted font-weight-bold small">Informations Personnelles</h5>
+                                <div class="row mb-3">
+                                    <div class="col-sm-4 text-muted font-weight-bold">Email</div>
+                                    <div class="col-sm-8 text-dark">@Model.Email</div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-4 text-muted font-weight-bold">Téléphone</div>
+                                    <div class="col-sm-8 text-dark">@(Model.Mobile ?? "Non renseigné")</div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-4 text-muted font-weight-bold">Adresse</div>
+                                    <div class="col-sm-8 text-dark">@(Model.Address ?? "Non renseignée")</div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-4 text-muted font-weight-bold">Membre depuis</div>
+                                    <div class="col-sm-8 text-dark">@Model.CreateDate?.ToShortDateString()</div>
+                                </div>
+
+                                @if (Model.Role == "Admin")
+                                {
+                                    <hr class="my-4">
+                                    <h5 class="mb-4 text-uppercase text-muted font-weight-bold small">Administration</h5>
+                                    <a asp-controller="Products" asp-action="Index" class="btn btn-dark btn-lg btn-block rounded-pill shadow-sm">
+                                        <i class="fa fa-cogs mr-2"></i> Gérer les Produits
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

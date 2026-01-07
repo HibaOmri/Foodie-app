@@ -1,0 +1,30 @@
+﻿@model string
+
+@{
+    ViewData["Title"] = "Commande Validée";
+}
+
+<section class="food_section layout_padding">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2 class="text-success">Merci pour votre commande !</h2>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8 text-center">
+                <div class="alert alert-success">
+                    <h4>Votre commande a été enregistrée avec succès.</h4>
+                    <p>Numéro de suivi : <strong>@Model</strong></p>
+                </div>
+
+                <img src="~/images/f2.png" alt="Succès" style="width: 200px; margin: 20px auto; display: block;">
+
+                <p>Nos chefs vont commencer à préparer vos plats immédiatement.</p>
+
+                <div class="mt-4">
+                    <a href="/" class="btn btn-warning text-white">Retourner à l'accueil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

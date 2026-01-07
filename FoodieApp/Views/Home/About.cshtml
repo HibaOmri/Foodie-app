@@ -1,0 +1,117 @@
+@{
+    ViewData["Title"] = "A Propos";
+}
+
+<section class="about_section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="img-box rounded overflow-hidden shadow-lg position-relative">
+                    <img src="~/images/about-img.png" alt="About Foodie" class="w-100">
+                    <div class="position-absolute bg-warning text-white p-3 font-weight-bold shadow-sm" style="bottom: 0; right: 0; border-top-left-radius: 20px;">
+                        Depuis 2010
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="detail-box pl-md-5 mt-4 mt-md-0">
+                    <div class="heading_container">
+                        <h2 class="font-weight-bold mb-4">Notre Histoire</h2>
+                    </div>
+                    <p class="lead text-muted mb-4">
+                        Bienvenue chez Foodie, où la passion de la cuisine rencontre l'art de la convivialité. Ce qui a commencé comme un petit food truck est devenu le rendez-vous incontournable des gourmands.
+                    </p>
+                    <p class="text-secondary mb-5">
+                        Nous croyons que la bonne nourriture rassemble les gens. C'est pourquoi nous sélectionnons rigoureusement nos producteurs locaux pour vous offrir des ingrédients d'une fraîcheur irréprochable. Nos chefs mettent tout leur cœur dans chaque burger, chaque pizza et chaque plat de pâtes.
+                    </p>
+                    
+                    <div class="row mb-5">
+                        <div class="col-sm-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="icon_box bg-warning text-white rounded-circle d-flex align-items-center justify-content-center mr-3 shadow-sm" style="width: 50px; height: 50px;">
+                                    <i class="fa fa-leaf"></i>
+                                </div>
+                                <div>
+                                    <h6 class="font-weight-bold mb-0">Produits Frais</h6>
+                                    <small class="text-muted">100% Bio & Local</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="icon_box bg-warning text-white rounded-circle d-flex align-items-center justify-content-center mr-3 shadow-sm" style="width: 50px; height: 50px;">
+                                    <i class="fa fa-truck"></i>
+                                </div>
+                                <div>
+                                    <h6 class="font-weight-bold mb-0">Livraison Rapide</h6>
+                                    <small class="text-muted">Moins de 30 min</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a asp-controller="Home" asp-action="Menu" class="btn btn-warning rounded-pill text-white px-5 py-3 font-weight-bold shadow-lg">
+                        Découvrir notre Menu
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="team_section layout_padding bg-light">
+    <div class="container">
+        <div class="heading_container heading_center mb-5">
+            <h2>Nos Chefs</h2>
+            <p class="text-muted">Les artistes derrière vos plats préférés</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 mx-auto">
+                <div class="box bg-white rounded shadow-sm overflow-hidden text-center pb-4 hover-lift">
+                    <div class="img-box mb-3">
+                        <img src="/images/chef_mario_pizza_1766018838487.png" class="w-100" style="height: 300px; object-fit: cover;" alt="">
+                    </div>
+                    <div class="detail-box">
+                        <h5 class="font-weight-bold">Chef Mario</h5>
+                        <p class="text-warning small text-uppercase font-weight-bold">Expert Pizza</p>
+                        <div class="social_box mt-3">
+                            <a href="#" class="text-muted mx-2"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="text-muted mx-2"><i class="fa fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mx-auto">
+                <div class="box bg-white rounded shadow-sm overflow-hidden text-center pb-4 hover-lift">
+                    <div class="img-box mb-3">
+                        <img src="/images/chef_julia_burger_1766018854855.png" class="w-100" style="height: 300px; object-fit: cover;" alt="">
+                    </div>
+                    <div class="detail-box">
+                        <h5 class="font-weight-bold">Chef Julia</h5>
+                        <p class="text-warning small text-uppercase font-weight-bold">Spécialiste Burger</p>
+                        <div class="social_box mt-3">
+                            <a href="#" class="text-muted mx-2"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="text-muted mx-2"><i class="fa fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-4 col-sm-6 mx-auto">
+                <div class="box bg-white rounded shadow-sm overflow-hidden text-center pb-4 hover-lift">
+                    <div class="img-box mb-3">
+                        <img src="/images/chef_luigi_pasta_1766018873968.png" class="w-100" style="height: 300px; object-fit: cover;" alt="">
+                    </div>
+                    <div class="detail-box">
+                        <h5 class="font-weight-bold">Chef Luigi</h5>
+                        <p class="text-warning small text-uppercase font-weight-bold">Maître Pâtes</p>
+                        <div class="social_box mt-3">
+                            <a href="#" class="text-muted mx-2"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="text-muted mx-2"><i class="fa fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

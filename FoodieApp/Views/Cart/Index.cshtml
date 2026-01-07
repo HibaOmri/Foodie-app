@@ -1,0 +1,69 @@
+﻿@model List<FoodieApp.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Mon Panier";
+    decimal total = 0;
+}
+
+<section class="food_section layout_padding">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2>Votre Panier</h2>
+        </div>
+
+        @if (Model.Count == 0)
+        {
+            <div class="alert alert-warning text-center">
+                Votre panier est vide. <a href="/" class="alert-link">Retourner au menu</a>.
+            </div>
+        }
+        else
+        {
+            <table class="table table-bordered mt-4">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Produit</th>
+                        <th>Prix</th>
+                        <th>Quantité</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        var sousTotal = (item.Product.Price ?? 0) * item.Quantity;
+                        total += sousTotal;
+                        <tr>
+                            <td>
+                                <img src="@(item.Product.ImageUrl ?? "/images/f1.png")" width="50" style="border-radius:50%; margin-right:10px;" />
+                                @item.Product.Name
+                            </td>
+                            <td>@item.Product.Price €</td>
+                            <td style="min-width: 120px;">
+                                <a asp-controller="Cart" asp-action="Decrease" asp-route-id="@item.Product.ProductId" class="btn btn-sm btn-secondary">-</a>
+                                <span class="mx-2">@item.Quantity</span>
+                                <a asp-controller="Cart" asp-action="Add" asp-route-id="@item.Product.ProductId" class="btn btn-sm btn-secondary">+</a>
+                            </td>
+                            <td>@sousTotal €</td>
+                            <td>
+                                <a asp-controller="Cart" asp-action="Remove" asp-route-id="@item.Product.ProductId" class="btn btn-danger btn-sm">X</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-right"><strong>Total à payer :</strong></td>
+                        <td colspan="2"><strong>@total €</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="text-center mt-4">
+                <a href="/" class="btn btn-secondary">Continuer mes achats</a>
+                <a asp-controller="Cart" asp-action="Checkout" class="btn btn-warning text-white">Valider la commande</a>
+            </div>
+        }
+    </div>
+</section>

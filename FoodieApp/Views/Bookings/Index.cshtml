@@ -1,0 +1,67 @@
+﻿@model IEnumerable<FoodieApp.Models.Booking>
+
+@{
+    ViewData["Title"] = "Administration Réservations";
+}
+
+<section class="food_section layout_padding">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <div>
+                <h2 class="font-weight-bold">Gestion des Réservations</h2>
+                <p class="text-muted">Suivez les réservations de tables.</p>
+            </div>
+            <a asp-action="Create" class="btn btn-warning rounded-pill text-white font-weight-bold px-4 shadow-sm">
+                <i class="fa fa-plus-circle mr-2"></i> Nouvelle Réservation
+            </a>
+        </div>
+
+        <div class="card border-0 shadow-lg rounded-lg overflow-hidden">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-borderless mb-0">
+                        <thead class="bg-light text-muted border-bottom">
+                            <tr>
+                                <th class="pl-4 py-4 font-weight-bold text-uppercase small">Client</th>
+                                <th class="py-4 font-weight-bold text-uppercase small">Contact</th>
+                                <th class="py-4 font-weight-bold text-uppercase small text-center">Couverts</th>
+                                <th class="py-4 font-weight-bold text-uppercase small text-center">Date & Heure</th>
+                                <th class="pr-4 py-4 font-weight-bold text-uppercase small text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model) {
+                                <tr class="border-bottom">
+                                    <td class="pl-4 align-middle">
+                                        <div class="font-weight-bold text-dark">@item.Name</div>
+                                    </td>
+                                    <td class="align-middle">
+                                         <div class="text-muted small"><i class="fa fa-phone mr-1"></i> @item.Phone</div>
+                                         <div class="text-muted small"><i class="fa fa-envelope mr-1"></i> @item.Email</div>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <span class="badge badge-info px-2 py-1">@item.GuestCount pers.</span>
+                                    </td>
+                                    <td class="align-middle text-center font-weight-bold text-dark">
+                                        @(item.BookingDate.HasValue ? item.BookingDate.Value.ToString("g") : "-")
+                                    </td>
+                                    <td class="pr-4 align-middle text-right">
+                                        <a asp-action="Edit" asp-route-id="@item.BookingId" class="btn btn-sm btn-outline-primary rounded-circle mr-1" title="Modifier">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a asp-action="Details" asp-route-id="@item.BookingId" class="btn btn-sm btn-outline-info rounded-circle mr-1" title="Détails">
+                                            <i class="fa fa-info"></i>
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.BookingId" class="btn btn-sm btn-outline-danger rounded-circle" title="Supprimer">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
