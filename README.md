@@ -10,6 +10,10 @@ FoodieApp is a web application built with ASP.NET Core MVC for managing a restau
 - Place orders.
 
 ### Admin Dashboard
+To access the administrative panel, you must log in with the default administrator credentials:
+- **Username:** `admin`
+- **Password:** `admin123`
+
 - **Product Management (CRUD):** 
   - **Create:** Add new dishes with images, prices, and descriptions.
   - **Read:** View the complete list of available dishes.
